@@ -3,8 +3,8 @@ import { cors } from "hono/cors";
 import Stripe from "stripe";
 import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3";
 import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
-import { db } from "./database";
-import { products } from "./database/schema";
+import { db } from "./database/index.ts";
+import { products } from "./database/schema.ts";
 import { eq } from "drizzle-orm";
 
 const stripe = process.env.STRIPE_SECRET_KEY ? new Stripe(process.env.STRIPE_SECRET_KEY) : null;

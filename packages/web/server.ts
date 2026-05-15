@@ -1,7 +1,7 @@
 import { serve } from "@hono/node-server";
 import { serveStatic } from "@hono/node-server/serve-static";
 import { Hono } from "hono";
-import app from "./src/api/index";
+import app from "./src/api/index.ts";
 
 const server = new Hono();
 
