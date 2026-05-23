@@ -21,7 +21,7 @@ function useInView(threshold = 0.15) {
 
 type Product = { id: number; name: string; price: number; image: string; badge: string; description: string; active: boolean };
 const FALLBACK: Product[] = [
-  { id: 1, name: "Federa per Cuscino in Seta — Talpa", price: 59.99, image: "/taupe-silk.png", badge: "Novità", description: "Seta di gelso Grade 6A 22 Momme · Chiusura con zip · Confezione regalo inclusa", active: true },
+  { id: 1, name: "Federa per Cuscino in Seta — Talpa", price: 51.99, image: "/taupe-silk.png", badge: "Novità", description: "Seta di gelso Grade 6A 22 Momme · Chiusura con zip · Confezione regalo inclusa", active: true },
 ];
 
 const features = [
@@ -96,7 +96,7 @@ function SiteContent() {
 
       {/* SALE BANNER */}
       <Link href="/preorder" style={{ display: "block", background: "#1A1208", color: "#E8D5A3", textAlign: "center", padding: "0.7rem", fontSize: "0.75rem", letterSpacing: "0.15em", textTransform: "uppercase", fontWeight: 500, textDecoration: "none" }}>
-        🎉 Pre-ordine Aperto — Prezzo Lancio €59.99 · Solo 23 Posti <span style={{ color: "#C9A84C", marginLeft: "0.5rem" }}>→ Prenota ora</span>
+        🎉 Pre-ordine Aperto — Prezzo Lancio €51.99 · Solo 23 Posti <span style={{ color: "#C9A84C", marginLeft: "0.5rem" }}>→ Prenota ora</span>
       </Link>
 
       {/* HERO */}

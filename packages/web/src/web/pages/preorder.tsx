@@ -27,7 +27,7 @@ export default function PreOrder() {
   }
 
   const ORIGINAL = 79.99;
-  const PREORDER = 59.99;
+  const PREORDER = 51.99;
   const DISCOUNT = Math.round((1 - PREORDER / ORIGINAL) * 100);
   const SPOTS_LEFT = 23;
 
