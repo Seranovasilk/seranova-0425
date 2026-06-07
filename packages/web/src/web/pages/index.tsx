@@ -59,7 +59,7 @@ const SIZES = [
 function SiteContent() {
   const [cartOpen, setCartOpen] = useState(false);
   const [products, setProducts] = useState<Product[]>(FALLBACK);
-  const [selectedColor, setSelectedColor] = useState(COLORS[0].name);
+  const [selectedColor, setSelectedColor] = useState("Beige");
   const [selectedSize, setSelectedSize] = useState(SIZES[0]);
   const { addItem, count } = useCart();
 
@@ -196,12 +196,12 @@ function SiteContent() {
                 <p style={{ color: "#6B5B3E", fontSize: "0.78rem", marginBottom: "0.5rem" }}>{(p as any).description}</p>
                 {/* COLOR SELECTOR */}
                 <div style={{ margin: "0.8rem 0 0.4rem" }}>
-                  <p style={{ fontSize: "0.72rem", letterSpacing: "0.12em", textTransform: "uppercase", color: "#6B5B3E", marginBottom: "0.5rem" }}>Colore: <strong style={{ color: "#1A1208" }}>{selectedColor}</strong></p>
+                  <p style={{ fontSize: "0.72rem", letterSpacing: "0.12em", textTransform: "uppercase", color: "#6B5B3E", marginBottom: "0.5rem" }}>Colore</p>
                   <div style={{ display: "flex", gap: "0.5rem", flexWrap: "wrap" }}>
                     {COLORS.map(c => (
-                      <button key={c.name} title={c.name} onClick={() => setSelectedColor(c.name)}
-                        style={{ width: "24px", height: "24px", borderRadius: "50%", background: c.hex, border: selectedColor === c.name ? "2px solid #C9A84C" : "2px solid transparent", outline: selectedColor === c.name ? "1px solid #C9A84C" : "1px solid #ccc", cursor: "pointer", transition: "outline 0.15s" }}
-                      />
+                      <button key={c.name} onClick={() => setSelectedColor(c.name)}
+                        style={{ padding: "0.35rem 0.8rem", fontSize: "0.72rem", fontWeight: 500, border: selectedColor === c.name ? "1.5px solid #C9A84C" : "1.5px solid #ccc", background: selectedColor === c.name ? "#FFF8EE" : "transparent", color: "#1A1208", cursor: "pointer", transition: "all 0.15s" }}
+                      >{c.name}</button>
                     ))}
                   </div>
                 </div>
