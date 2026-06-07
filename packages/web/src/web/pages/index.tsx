@@ -97,7 +97,7 @@ function SiteContent() {
                 "✦  Spedizione Gratuita in Tutta Italia",
                 "✦  Affrettati — il Tuo Sonno Merita di Meglio",
                 "✦  Seta di Gelso Grade 6A · Qualità Artigianale",
-                "✦  Confezione Regalo Inclusa",
+                "✦  Il Regalo Perfetto per Chi Ami",
                 "✦  Spedizione Gratuita in Tutta Italia",
                 "✦  Non Rimandare il Lusso di una Notte Perfetta",
               ].map((text, i) => (
