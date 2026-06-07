@@ -42,9 +42,25 @@ const blogPosts = [
   { title: "Come Prendersi Cura della Federa in Seta", date: "3 Maggio 2026", image: "/blog2.jpg", tag: "Guida alla Cura", slug: "/blog/cura-della-federa" },
 ];
 
+const COLORS = [
+  { name: "Talpa", hex: "#B5A89A" },
+  { name: "Rosso", hex: "#A83232" },
+  { name: "Nero", hex: "#1A1208" },
+  { name: "Verde", hex: "#4A6741" },
+  { name: "Rosa", hex: "#D4A0A0" },
+  { name: "Beige", hex: "#D6C9B0" },
+];
+
+const SIZES = [
+  { label: "50×70 cm", price: 51.99 },
+  { label: "50×60 cm", price: 46.99 },
+];
+
 function SiteContent() {
   const [cartOpen, setCartOpen] = useState(false);
   const [products, setProducts] = useState<Product[]>(FALLBACK);
+  const [selectedColor, setSelectedColor] = useState(COLORS[0].name);
+  const [selectedSize, setSelectedSize] = useState(SIZES[0]);
   const { addItem, count } = useCart();
 
   const heroSection = useInView(0.1);
@@ -63,7 +79,8 @@ function SiteContent() {
   }, []);
 
   const handleAdd = (p: Product) => {
-    addItem({ id: p.id, name: p.name, price: p.price, image: p.image });
+    const variantName = `${p.name} — ${selectedColor}, ${selectedSize.label}`;
+    addItem({ id: p.id, name: variantName, price: selectedSize.price, image: p.image });
     setCartOpen(true);
   };
 
@@ -93,11 +110,6 @@ function SiteContent() {
           </button>
         </div>
       </nav>
-
-      {/* SALE BANNER */}
-      <Link href="/preorder" style={{ display: "block", background: "#1A1208", color: "#E8D5A3", textAlign: "center", padding: "0.7rem", fontSize: "0.75rem", letterSpacing: "0.15em", textTransform: "uppercase", fontWeight: 500, textDecoration: "none" }}>
-        🎉 Pre-ordine Aperto — Prezzo Lancio €51.99 · Solo 23 Posti <span style={{ color: "#C9A84C", marginLeft: "0.5rem" }}>→ Prenota ora</span>
-      </Link>
 
       {/* HERO */}
       <section ref={heroSection.ref} style={{ position: "relative", minHeight: "90vh", display: "flex", alignItems: "center", overflow: "hidden" }}>
@@ -182,8 +194,30 @@ function SiteContent() {
                 </div>
                 <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "1.5rem", fontWeight: 500, marginBottom: "0.8rem", lineHeight: 1.2 }}>{p.name}</h3>
                 <p style={{ color: "#6B5B3E", fontSize: "0.78rem", marginBottom: "0.5rem" }}>{(p as any).description}</p>
+                {/* COLOR SELECTOR */}
+                <div style={{ margin: "0.8rem 0 0.4rem" }}>
+                  <p style={{ fontSize: "0.72rem", letterSpacing: "0.12em", textTransform: "uppercase", color: "#6B5B3E", marginBottom: "0.5rem" }}>Colore: <strong style={{ color: "#1A1208" }}>{selectedColor}</strong></p>
+                  <div style={{ display: "flex", gap: "0.5rem", flexWrap: "wrap" }}>
+                    {COLORS.map(c => (
+                      <button key={c.name} title={c.name} onClick={() => setSelectedColor(c.name)}
+                        style={{ width: "24px", height: "24px", borderRadius: "50%", background: c.hex, border: selectedColor === c.name ? "2px solid #C9A84C" : "2px solid transparent", outline: selectedColor === c.name ? "1px solid #C9A84C" : "1px solid #ccc", cursor: "pointer", transition: "outline 0.15s" }}
+                      />
+                    ))}
+                  </div>
+                </div>
+                {/* SIZE SELECTOR */}
+                <div style={{ margin: "0.8rem 0 0.4rem" }}>
+                  <p style={{ fontSize: "0.72rem", letterSpacing: "0.12em", textTransform: "uppercase", color: "#6B5B3E", marginBottom: "0.5rem" }}>Misura</p>
+                  <div style={{ display: "flex", gap: "0.5rem" }}>
+                    {SIZES.map(s => (
+                      <button key={s.label} onClick={() => setSelectedSize(s)}
+                        style={{ padding: "0.35rem 0.8rem", fontSize: "0.72rem", fontWeight: 500, border: selectedSize.label === s.label ? "1.5px solid #C9A84C" : "1.5px solid #ccc", background: selectedSize.label === s.label ? "#FFF8EE" : "transparent", color: "#1A1208", cursor: "pointer", transition: "all 0.15s" }}
+                      >{s.label}</button>
+                    ))}
+                  </div>
+                </div>
                 <div style={{ margin: "1rem 0 1.5rem" }}>
-                  <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "1.8rem", fontWeight: 500, color: "#1A1208" }}>€{p.price.toFixed(2)}</span>
+                  <span style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "1.8rem", fontWeight: 500, color: "#1A1208" }}>€{selectedSize.price.toFixed(2)}</span>
                 </div>
                 <div style={{ marginBottom: "1.5rem" }}>
                   {["Riduce il crespo e protegge i capelli", "Mantiene l'idratazione della pelle", "Termoregolante tutto l'anno", "Confezione regalo inclusa"].map(b => (
