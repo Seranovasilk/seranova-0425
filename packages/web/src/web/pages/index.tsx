@@ -21,7 +21,7 @@ function useInView(threshold = 0.15) {
 
 type Product = { id: number; name: string; price: number; image: string; badge: string; description: string; active: boolean };
 const FALLBACK: Product[] = [
-  { id: 1, name: "Federa per Cuscino in Seta — Talpa", price: 51.99, image: "/taupe-silk.png", badge: "Novità", description: "Seta di gelso Grade 6A 22 Momme · Chiusura con zip · Confezione regalo inclusa", active: true },
+  { id: 1, name: "Federa per Cuscino in Seta", price: 51.99, image: "/taupe-silk.png", badge: "Novità", description: "Seta di gelso Grade 6A 22 Momme · Chiusura con zip · Confezione regalo inclusa", active: true },
 ];
 
 const features = [
@@ -212,9 +212,9 @@ function SiteContent() {
               <div>
                 <div style={{ display: "flex", marginBottom: "0.6rem", gap: "2px" }}>
                   {[1,2,3,4,5].map(s => <Star key={s} size={13} fill="#C9A84C" color="#C9A84C" />)}
-                  <span style={{ fontSize: "0.72rem", color: "#6B5B3E", marginLeft: "0.4rem" }}>({p.reviews})</span>
+                  <span style={{ fontSize: "0.72rem", color: "#6B5B3E", marginLeft: "0.4rem" }}>+20 recensioni</span>
                 </div>
-                <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "1.5rem", fontWeight: 500, marginBottom: "0.8rem", lineHeight: 1.2 }}>{p.name}</h3>
+                <h3 style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "1.5rem", fontWeight: 500, marginBottom: "0.8rem", lineHeight: 1.2 }}>Federa per Cuscino in Seta</h3>
                 <p style={{ color: "#6B5B3E", fontSize: "0.78rem", marginBottom: "0.5rem" }}>{(p as any).description}</p>
                 {/* COLOR SELECTOR */}
                 <div style={{ margin: "0.8rem 0 0.4rem" }}>
