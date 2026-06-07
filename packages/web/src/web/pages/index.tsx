@@ -88,6 +88,28 @@ function SiteContent() {
     <div style={{ fontFamily: "'Poppins', sans-serif", backgroundColor: "#FAF7F2", color: "#1A1208" }}>
       <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
 
+      {/* MARQUEE BANNER */}
+      <div style={{ background: "#1A1208", overflow: "hidden", whiteSpace: "nowrap", padding: "0.65rem 0", borderBottom: "1px solid rgba(201,168,76,0.25)" }}>
+        <div style={{ display: "inline-block", animation: "marquee 28s linear infinite" }}>
+          {[1,2].map(n => (
+            <span key={n} style={{ display: "inline-block" }}>
+              {[
+                "✦  Spedizione Gratuita in Tutta Italia",
+                "✦  Affrettati — il Tuo Sonno Merita di Meglio",
+                "✦  Seta di Gelso Grade 6A · Qualità Artigianale",
+                "✦  Confezione Regalo Inclusa",
+                "✦  Spedizione Gratuita in Tutta Italia",
+                "✦  Non Rimandare il Lusso di una Notte Perfetta",
+              ].map((text, i) => (
+                <span key={i} style={{ fontFamily: "'Cormorant Garamond', serif", fontSize: "0.88rem", fontWeight: 400, letterSpacing: "0.18em", color: i % 2 === 0 ? "#E8D5A3" : "#C9A84C", marginRight: "3rem", fontStyle: i % 3 === 1 ? "italic" : "normal" }}>
+                  {text}
+                </span>
+              ))}
+            </span>
+          ))}
+        </div>
+      </div>
+
       {/* NAVBAR */}
       <nav style={{ backgroundColor: "#FAF7F2", borderBottom: "1px solid #E8D5A3", position: "sticky", top: 0, zIndex: 100 }}>
         <div style={{ maxWidth: "1280px", margin: "0 auto", padding: "0 2rem", display: "flex", alignItems: "center", justifyContent: "space-between", height: "72px" }}>
@@ -393,6 +415,10 @@ function SiteContent() {
 
       <style>{`
         .product-card:hover .product-img { transform: scale(1.04); }
+        @keyframes marquee {
+          0% { transform: translateX(0); }
+          100% { transform: translateX(-50%); }
+        }
         @media (max-width: 768px) {
           section[style*="grid-template-columns: 1fr 1fr"] { display: block !important; }
           footer div[style*="grid-template-columns: 2fr"] { grid-template-columns: 1fr 1fr !important; }
